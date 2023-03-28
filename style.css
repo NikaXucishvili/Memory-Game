@@ -45,6 +45,11 @@ body {
     height: 100%;
     background-position: center;
     background-size: cover;
+    transition: all 1.5s ease;
+}
+
+.image{
+  opacity: 0;
 }
 
 #loading-screen {
