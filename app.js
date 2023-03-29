@@ -2,6 +2,7 @@ const button = document.getElementById('button');
 const loadingScreen = document.getElementById('loading-screen');
 const image = document.querySelectorAll('.image');
 
+// Loading screen function
 
 button.addEventListener("click", function(){
     loadingScreen.style.display = 'none';
@@ -10,6 +11,8 @@ button.addEventListener("click", function(){
     }
 });
 
+
+// Fliping cards function
 button.addEventListener('click', flipCards);
 button.addEventListener('click', widthDone);
 
@@ -20,7 +23,7 @@ function flipCards(){
     });
 }
 
-
+// Cards loading function
 function widthDone(){
     setTimeout(() => {
         for(var b = 0; b < image.length; b++){
@@ -28,3 +31,5 @@ function widthDone(){
         }
     }, 400);
 }
+
+// Cards matching function
