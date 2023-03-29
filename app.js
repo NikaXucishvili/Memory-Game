@@ -1,13 +1,11 @@
-let button = document.getElementById('button');
-let loadingScreen = document.getElementById('loading-screen');
-let image = document.querySelectorAll('.image');
+const button = document.getElementById('button');
+const loadingScreen = document.getElementById('loading-screen');
+const image = document.querySelectorAll('.image');
 
 button.addEventListener("click", function(){
     loadingScreen.style.display = 'none';
-});
-
-button.addEventListener("click", function(){
     for(var i = 0; i < image.length; i++){
         image[i].style.opacity = "1";
     }
-})
+});
+
