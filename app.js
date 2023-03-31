@@ -34,21 +34,38 @@ setTimeout(function(){
 cards.forEach(card => {
     card.addEventListener('click', () => {
         flipCard(card);
-        image.forEach(img => {
-            oneImg.style.opacity = "1";
-        })
     });
 });
 
 // One card flip function
 
 function flipCard(card){
+    // Hide image for all cards except the clicked one
+    const images = card.querySelectorAll('.image');
+    images.forEach(image => {
+        if (image.parentElement !== card) {
+            image.style.opacity = '0';
+        }
+    });
+    // Flip the clicked card and show its image
     card.classList.add('flip');
-    timeoutId = setTimeout(() => {
+    const image = card.querySelector('.image');
+    if (image) {
+        image.style.opacity = '1';
+    }
+    // Set timeout to flip card back and hide its image after 2 seconds
+    if (card.timeoutId) {
+        clearTimeout(card.timeoutId);
+    }
+    card.timeoutId = setTimeout(() => {
         card.classList.remove('flip');
-        oneImg.style.opacity = "0";
-    }, 3000);
+        if (image) {
+            image.style.opacity = '0';
+        }
+        delete card.timeoutId;
+    }, 2000);
 }
+
 
 
 // All cards flip in the start
