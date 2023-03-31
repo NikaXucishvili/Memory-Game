@@ -2,6 +2,7 @@ const button = document.getElementById('button');
 const loadingScreen = document.getElementById('loading-screen');
 const image = document.querySelectorAll('.image');
 const cards = document.querySelectorAll('.card');
+const oneImg = document.querySelector('.image');
 let timeoutId;
 
 // Loading screen function
@@ -33,8 +34,8 @@ setTimeout(function(){
 cards.forEach(card => {
     card.addEventListener('click', () => {
         flipCard(card);
-        image.forEach(image => {
-            image.style.opacity = "1";
+        image.forEach(img => {
+            oneImg.style.opacity = "1";
         })
     });
 });
@@ -45,6 +46,7 @@ function flipCard(card){
     card.classList.add('flip');
     timeoutId = setTimeout(() => {
         card.classList.remove('flip');
+        oneImg.style.opacity = "0";
     }, 3000);
 }
 
