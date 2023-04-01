@@ -107,9 +107,12 @@ function widthDone(){
 // Cards matching function
 
 const matchingCards = (card1, card2) =>{
-    const image1 = card1.querySelector('.card');
-    const image2 = card2.querySelector('.card');
-    if(image1.getAttribute('src') == image2.getAttribute('src')){
+    card1 = document.querySelector('.card');
+    card2 = document.querySelector('.card');
+    image1 - card1.querySelector('.image')
+    image2 = card2.querySelector('.image2');
+    if(image1,card1.getAttribute('src') == image2,card2.getAttribute('src')){
         alert('matching');
     }
 }
+
