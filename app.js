@@ -5,6 +5,17 @@ const cards = document.querySelectorAll('.card');
 const oneImg = document.querySelector('.image');
 let timeoutId;
 
+// random images
+const cardImages = ["spongebob.png", "jerry.png", "mario.png", "tom.png", "mickeymouse.png", "pumba.png", "scoobydoo.png", "shrek.png"]
+
+cards.forEach(card => {
+  const index = Math.floor(Math.random() * 8);
+  card.setAttribute("data-card", index + 1);
+  const image = card.querySelector(".image");
+  image.setAttribute("src", `./images/${cardImages[index]}`);
+});
+
+
 // Loading screen function
 
 button.addEventListener("click", function(){
@@ -86,3 +97,5 @@ function widthDone(){
 }
 
 // Cards matching function
+
+
