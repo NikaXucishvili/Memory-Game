@@ -2,18 +2,19 @@ const button = document.getElementById('button');
 const loadingScreen = document.getElementById('loading-screen');
 const image = document.querySelectorAll('.image');
 const cards = document.querySelectorAll('.card');
-const oneImg = document.querySelector('.image');
 let timeoutId;
 
 // random images
-const cardImages = ["spongebob.png", "jerry.png", "mario.png", "tom.png", "mickeymouse.png", "pumba.png", "scoobydoo.png", "shrek.png"]
+const cardImages = ["spongebob.png", "jerry.png", "mario.png", "tom.png", "mickeymouse.png", "pumba.png", "scoobydoo.png", "shrek.png", "minion.png"];
 
 cards.forEach(card => {
-  const index = Math.floor(Math.random() * 8);
-  card.setAttribute("data-card", index + 1);
+  const randomIndex = Math.floor(Math.random() * (cardImages.length / 2));
+  const evenIndex = randomIndex * 2;
+  card.setAttribute("data-card", evenIndex);
   const image = card.querySelector(".image");
-  image.setAttribute("src", `./images/${cardImages[index]}`);
+  image.setAttribute("src", `./images/${cardImages[randomIndex]}`);
 });
+
 
 
 // Loading screen function
@@ -97,5 +98,3 @@ function widthDone(){
 }
 
 // Cards matching function
-
-
