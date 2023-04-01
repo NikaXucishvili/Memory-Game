@@ -5,15 +5,22 @@ const cards = document.querySelectorAll('.card');
 let timeoutId;
 
 // random images
-const cardImages = ["spongebob.png", "jerry.png", "mario.png", "tom.png", "mickeymouse.png", "pumba.png", "scoobydoo.png", "shrek.png", "minion.png"];
+const cardImages = ["spongebob.png", "jerry.png", "mario.png", "tom.png", "mickeymouse.png", "pumba.png", "scoobydoo.png", "shrek.png"];
 
-cards.forEach(card => {
-  const randomIndex = Math.floor(Math.random() * (cardImages.length / 2));
-  const evenIndex = randomIndex * 2;
-  card.setAttribute("data-card", evenIndex);
+// Create a new array with two copies of each image
+let shuffledImages = [...cardImages, ...cardImages];
+
+// Shuffle the array randomly
+for (let i = shuffledImages.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [shuffledImages[i], shuffledImages[j]] = [shuffledImages[j], shuffledImages[i]];
+}
+
+cards.forEach((card, index) => {
   const image = card.querySelector(".image");
-  image.setAttribute("src", `./images/${cardImages[randomIndex]}`);
+  image.setAttribute("src", `./images/${shuffledImages[index]}`);
 });
+
 
 
 
@@ -98,3 +105,11 @@ function widthDone(){
 }
 
 // Cards matching function
+
+const matchingCards = (card1, card2) =>{
+    const image1 = card1.querySelector('.card');
+    const image2 = card2.querySelector('.card');
+    if(image1.getAttribute('src') == image2.getAttribute('src')){
+        alert('matching');
+    }
+}
