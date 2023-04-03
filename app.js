@@ -138,5 +138,3 @@ function widthDone(){
     }, 400);
 }
 
-// Cards matching function
-
