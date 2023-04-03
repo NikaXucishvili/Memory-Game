@@ -59,6 +59,12 @@ body {
     transition: all 1.5s ease;
 }
 
+.matched{
+  transform: scale(0); /* shrink the matched card to 0 size */
+  opacity: 0; /* hide the matched card */
+  transition: transform 1.8s ease-out, opacity 1.3s ease-out; 
+}
+
 #loading-screen {
     position: fixed;
     top: 0;

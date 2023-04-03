@@ -2,6 +2,7 @@ const button = document.getElementById('button');
 const loadingScreen = document.getElementById('loading-screen');
 const image = document.querySelectorAll('.image');
 const cards = document.querySelectorAll('.card');
+
 let timeoutId;
 
 // random images
@@ -56,8 +57,6 @@ cards.forEach(card => {
     });
 });
 
-// One card flip function
-
 function flipCard(card){
     // Hide image for all cards except the clicked one
     const images = card.querySelectorAll('.image');
@@ -83,7 +82,42 @@ function flipCard(card){
         }
         delete card.timeoutId;
     }, 2000);
+
+    // Check if two cards match
+    const flippedCards = document.querySelectorAll('.flip');
+    if (flippedCards.length === 2) {
+        const card1 = flippedCards[0];
+        const card2 = flippedCards[1];
+        const image1 = card1.querySelector('.image');
+        const image2 = card2.querySelector('.image');
+        if (image1.src === image2.src) {
+            // Cards match, delete them from the game
+            card1.classList.add('matched');
+            card2.classList.add('matched');
+            setTimeout(() => {
+                card1.remove();
+                card2.remove();
+                // Check if all cards have been matched
+                const remainingCards = document.querySelectorAll('.card');
+                if (remainingCards.length === 0) {
+                    // All cards have been matched, display winner text and reset game
+                    const winnerText = document.createElement('h1');
+                    winnerText.textContent = 'Winner!';
+                    winnerText.style.fontSize = '5rem'; // change the font size to 5 rem
+                    winnerText.style.position = 'absolute';
+                    winnerText.style.top = '50%';
+                    winnerText.style.left = '50%';
+                    winnerText.style.transform = 'translate(-50%, -50%)'; // center the element
+                    document.body.appendChild(winnerText);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                }
+            }, 1000);
+        }
+    }
 }
+
 
 
 
@@ -105,14 +139,4 @@ function widthDone(){
 }
 
 // Cards matching function
-
-const matchingCards = (card1, card2) =>{
-    card1 = document.querySelector('.card');
-    card2 = document.querySelector('.card');
-    image1 - card1.querySelector('.image')
-    image2 = card2.querySelector('.image2');
-    if(image1,card1.getAttribute('src') == image2,card2.getAttribute('src')){
-        alert('matching');
-    }
-}
 
